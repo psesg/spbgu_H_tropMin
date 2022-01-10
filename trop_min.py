@@ -4,7 +4,7 @@ import os
 from itertools import *
 from typing import List, Any
 
-logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)  # DEBUG, CRITICAL
+logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)  # DEBUG, CRITICAL
 
 fromfile = False
 original_stdin = sys.stdin
@@ -18,7 +18,7 @@ def iter_signs(rep):
     return ls
 
 
-my_input_file = os.path.join(os.getcwd(), "trop_min.txt")
+my_input_file = os.path.join(os.getcwd(), "trop_min1.txt")
 if os.path.exists(my_input_file):
     # file exists
     logging.info("will take data from {}".format(my_input_file))
