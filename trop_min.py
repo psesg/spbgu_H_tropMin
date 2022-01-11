@@ -29,6 +29,7 @@ else:
     logging.info("will take data from {}".format("stdin"))
 
 nset = int(sys.stdin.readline().strip("\n"))
+
 for i in range(nset):
     arr_list = []
     narr = int(sys.stdin.readline().strip("\n"))
@@ -36,6 +37,7 @@ for i in range(nset):
     arr_list = list(map(int, arr_list))
     logging.info("narr = {} \narr_list ={}".format(narr, arr_list))
     minval = None
+
     for i in product('+*', repeat=(narr - 1)):
         i = list(i)
         arr_list_cpy = arr_list.copy()
