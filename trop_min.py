@@ -56,14 +56,15 @@ for i in range(nset):
                     if i[k] == "*":
                         arr_list_cpy[k] = summa
                         arr_list_cpy[k+1] = summa
-                    else:
-                        break
-
-                for k in range(j, len(i)):
-                    if i[k] == "*":
                         i[k] = "+"
                     else:
                         break
+
+                #for k in range(j, len(i)):
+                #    if i[k] == "*":
+                #        i[k] = "+"
+                #    else:
+                #        break
 
         logging.info("arr_list_cpy = '{}'".format(arr_list_cpy))
         logging.info("min = '{}'".format(min(arr_list_cpy)))
