@@ -3,8 +3,9 @@ import sys
 import os
 from itertools import product
 from typing import List, Any
+from array import array
 
-logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)  # DEBUG, CRITICAL
+logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)  # DEBUG, CRITICAL
 
 fromfile = False
 original_stdin = sys.stdin
@@ -35,12 +36,13 @@ for i in range(nset):
     narr = int(sys.stdin.readline().strip())
     arr_list = sys.stdin.readline().strip().split(" ", narr)
     arr_list = list(map(int, arr_list))
+    arr_list = array('i', arr_list)
     logging.info("narr = {} \narr_list ={}".format(narr, arr_list))
     minval = None
 
     for i in product('+*', repeat=(narr - 1)):
         i = list(i)
-        arr_list_cpy = arr_list.copy()
+        arr_list_cpy = array('i', arr_list)
         logging.info("i = '{}'".format(i))
         logging.info("arr_list = '{}'".format(arr_list))
         for j in range(len(i)):
@@ -60,17 +62,9 @@ for i in range(nset):
                     else:
                         break
 
-                #for k in range(j, len(i)):
-                #    if i[k] == "*":
-                #        i[k] = "+"
-                #    else:
-                #        break
-
         logging.info("arr_list_cpy = '{}'".format(arr_list_cpy))
         logging.info("min = '{}'".format(min(arr_list_cpy)))
-        #minloc = min(arr_list_cpy)
-        arr_list_cpy.sort()
-        minloc = arr_list_cpy[0]
+        minloc = min(arr_list_cpy)
         if minval is None:
             minval = minloc
         else:

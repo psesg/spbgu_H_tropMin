@@ -1,15 +1,20 @@
-from itertools import *
+import sys
+from itertools import product
+from array import array
 
-nset = int(input())
+nset = int(sys.stdin.readline().strip())
+list_arr = []
+
 for i in range(nset):
+    narr = int(sys.stdin.readline().strip())
+    arr_list = sys.stdin.readline().strip().split(" ", narr)
+    arr_list = list(map(int, arr_list))
+    arr_list = array('l', arr_list)
 
-    narr = int(input())
-    *arr_list, = map(int, input().split())
     minval = None
-
     for i in product('+*', repeat=(narr - 1)):
-        i = list(i)
-        arr_list_cpy = arr_list.copy()
+        i = array('u', i)
+        arr_list_cpy = array('l', arr_list)
 
         for j in range(len(i)):
             if i[j] == "*":

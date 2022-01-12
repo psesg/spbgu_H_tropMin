@@ -1,5 +1,6 @@
 import sys
 from itertools import product
+from array import array
 
 nset = int(sys.stdin.readline().strip())
 list_arr = []
@@ -8,13 +9,12 @@ for i in range(nset):
     narr = int(sys.stdin.readline().strip())
     arr_list = sys.stdin.readline().strip().split(" ", narr)
     arr_list = list(map(int, arr_list))
-    list_arr.append(arr_list)
+    arr_list = array('l', arr_list)
 
-for cur_ar in list_arr:
     minval = None
-    for i in product('+*', repeat=(len(cur_ar) - 1)):
-        i = list(i)
-        arr_list_cpy = cur_ar.copy()
+    for i in product('+*', repeat=(narr - 1)):
+        i = array('u', i)
+        arr_list_cpy = array('l', arr_list)
 
         for j in range(len(i)):
             if i[j] == "*":
