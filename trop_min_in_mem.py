@@ -4,7 +4,7 @@ import os
 from itertools import product
 from typing import List, Any
 
-logging.basicConfig(stream=sys.stderr, level=logging.DEBUG)  # DEBUG, CRITICAL
+logging.basicConfig(stream=sys.stderr, level=logging.CRITICAL)  # DEBUG, CRITICAL
 
 fromfile = False
 original_stdin = sys.stdin
@@ -29,18 +29,21 @@ else:
     logging.info("will take data from {}".format("stdin"))
 
 nset = int(sys.stdin.readline().strip())
-
+list_arr = []
 for i in range(nset):
     arr_list = []
     narr = int(sys.stdin.readline().strip())
     arr_list = sys.stdin.readline().strip().split(" ", narr)
     arr_list = list(map(int, arr_list))
-    logging.info("narr = {} \narr_list ={}".format(narr, arr_list))
-    minval = None
+    list_arr.append(arr_list)
 
-    for i in product('+*', repeat=(narr - 1)):
+    logging.info("narr = {} \narr_list ={}".format(narr, arr_list))
+
+for cur_ar in list_arr:
+    minval = None
+    for i in product('+*', repeat=(len(cur_ar) - 1)):
         i = list(i)
-        arr_list_cpy = arr_list.copy()
+        arr_list_cpy = cur_ar.copy()
         logging.info("i = '{}'".format(i))
         logging.info("arr_list = '{}'".format(arr_list))
         for j in range(len(i)):
